@@ -119,5 +119,6 @@ mutation{
         
 ### Prerequisites
 
-* java 11
-* maven
+* Java 11
+* Lombok  
+* Maven
