@@ -1,13 +1,9 @@
-# Building the App with Maven
-FROM maven:3-jdk-11
+FROM maven:3-jdk-11-slim as build
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
 
-ADD . /spring-graphgl
-WORKDIR /spring-graphgl
-
-# Run Maven build
-RUN mvn clean install
-
-FROM openjdk:11-jdk-slim
-COPY --from=0 "/spring-graphgl/target/spring-graphql-*.jar" app.jar
+FROM gcr.io/distroless/java:11
+COPY --from=build "/usr/src/app/target/spring-graphql-*.jar" /usr/app/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","/usr/app/app.jar"]
