@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 /**
  * @author atruon on 2020-12-14
  */
@@ -15,6 +18,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InputCourse implements Serializable {
 
+  @NotEmpty
+  @NotBlank(message = "Course name cannot be blank")
   private String courseName;
 
   public Course convert() {

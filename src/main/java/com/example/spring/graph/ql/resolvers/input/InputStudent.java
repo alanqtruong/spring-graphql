@@ -21,7 +21,7 @@ public class InputStudent implements Serializable {
   @NotBlank(message = "First name cannot be blank")
   private String firstName;
 
-  @NotBlank
+  @NotEmpty
   @NotBlank(message = "Last name cannot be blank")
   private String lastName;
 
