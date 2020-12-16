@@ -1,0 +1,48 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    # retreive all students
+    students: [Student!]
+    # retreive student by ID
+    student(id: Long!): Student
+    # retreive all courses
+    courses: [Course!]
+    # retreive student by ID
+    course(id: Long!): Course
+}
+
+type Mutation {
+    # Add a new Student
+    addStudent(student: InputStudent!): Student
+    # Add a new Course
+    addCourse(course: InputCourse!): Course
+    # Add a student to a course
+    addStudentToCourse(studentId: Long!, courseId: Long!): Student
+}
+
+type Student{
+    studentId: Long!
+    firstName: String!
+    lastName: String!
+    courses: [Course!]
+
+}
+
+type Course{
+    courseId: Long!
+    courseName: String!
+    students: [Student!]
+}
+
+input InputStudent{
+    firstName: String!
+    lastName: String!
+
+}
+
+input InputCourse{
+    courseName: String!
+}
