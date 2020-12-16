@@ -7,8 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,9 +24,7 @@ public class Course implements Serializable {
     @Column(name = "course_id", nullable = false)
     private long courseId;
 
-    @NotEmpty
     @Column(name = "course_name", nullable = false)
-    @NotBlank(message = "Course name cannot be blank")
     private String courseName;
 
     @JsonBackReference
