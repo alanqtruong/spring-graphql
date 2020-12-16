@@ -4,11 +4,16 @@ import com.example.spring.graph.ql.models.Course;
 import com.example.spring.graph.ql.models.Student;
 import com.example.spring.graph.ql.services.CourseService;
 import com.example.spring.graph.ql.services.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
+/**
+ * Preload data to repositories for demo
+ */
+@Slf4j
 @Component
 public class DataLoader {
 
@@ -30,6 +35,7 @@ public class DataLoader {
         studentService.save(new Student("Ben", "Johnson"));
         studentService.save(new Student("Luke", "Skywalker"));
         studentService.save(new Student("Han", "Solo"));
+        log.info("Completed adding students...");
     }
 
     private void loadCourses() {
@@ -44,6 +50,7 @@ public class DataLoader {
         courseService.save(new Course("Physics"));
         courseService.save(new Course("Chemistry"));
         courseService.save(new Course("Graphic Design"));
+        log.info("Completed adding courses...");
     }
 
     private void loadStudentToCourse() {
@@ -60,6 +67,7 @@ public class DataLoader {
         studentService.addStudentToCourse(4L, 7L);
         studentService.addStudentToCourse(4L, 10L);
         studentService.addStudentToCourse(4L, 11L);
+        log.info("Completed adding students to courses...");
     }
 
 }
