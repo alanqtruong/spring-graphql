@@ -4,6 +4,15 @@ Sample application demonstrating GraphQL with REST API equivalent using spring b
 
 ## Getting Started
 
+Option 1 (JAR)
+* mvn clean install -U
+* java -jar spring-graphql-*.jar
+
+Option 2 (Docker)
+* docker build -t spring-graphql:1.0 .
+* docker run -p 8080:8080 -t spring-graphql:1.0 .
+
+  
 * build using mvn clean install -U
 * run main
 
